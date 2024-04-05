@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@beam-australia/react-env": "^3.1.1",
     "express": "^4.19.2",
+    "path": "^0.12.7",
     "pg": "^8.11.5"
   }
 }

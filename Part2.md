@@ -22,23 +22,23 @@ app.get('/api/authors', async (req, res) => {
     let query;
     if (authorName) {
       query = {
-        text: `SELECT a.name, SUM((si.item_price::numeric) * si.quantity) AS total_sales
+        text: `SELECT a.name, a.email, SUM((si.item_price::numeric) * si.quantity) AS total_sales
                FROM authors a
                JOIN books b ON a.id = b.author_id
                JOIN sale_items si ON b.id = si.book_id
                WHERE a.name = $1
-               GROUP BY a.name
+               GROUP BY a.name, a.email
                ORDER BY total_sales DESC
                LIMIT 10`,
         values: [authorName],
       };
     } else {
       query = {
-        text: `SELECT a.name, SUM((si.item_price::numeric) * si.quantity) AS total_sales
+        text: `SELECT a.name, a.email, SUM((si.item_price::numeric) * si.quantity) AS total_sales
                FROM authors a
                JOIN books b ON a.id = b.author_id
                JOIN sale_items si ON b.id = si.book_id
-               GROUP BY a.name
+               GROUP BY a.name, a.email
                ORDER BY total_sales DESC
                LIMIT 10`,
       };
@@ -97,23 +97,23 @@ app.get('/api/authors', async (req, res) => {
     let query;
     if (authorName) {
       query = {
-        text: `SELECT a.name, SUM((si.item_price::numeric) * si.quantity) AS total_sales
+        text: `SELECT a.name, a.email, SUM((si.item_price::numeric) * si.quantity) AS total_sales
                FROM authors a
                JOIN books b ON a.id = b.author_id
                JOIN sale_items si ON b.id = si.book_id
                WHERE a.name = $1
-               GROUP BY a.name
+               GROUP BY a.name, a.email
                ORDER BY total_sales DESC
                LIMIT 10`,
         values: [authorName],
       };
     } else {
       query = {
-        text: `SELECT a.name, SUM((si.item_price::numeric) * si.quantity) AS total_sales
+        text: `SELECT a.name, a.email, SUM((si.item_price::numeric) * si.quantity) AS total_sales
                FROM authors a
                JOIN books b ON a.id = b.author_id
                JOIN sale_items si ON b.id = si.book_id
-               GROUP BY a.name
+               GROUP BY a.name, a.email
                ORDER BY total_sales DESC
                LIMIT 10`,
       };

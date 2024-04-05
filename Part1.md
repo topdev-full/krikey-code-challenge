@@ -40,11 +40,11 @@ WHERE a.name = 'Lorelai Gilmore';
 
 ### 3. What are the top 10 performing authors, ranked by sales revenue?
 ```SQL
-SELECT a.name, SUM(si.item_price * si.quantity) AS total_sales
+SELECT a.name, a.email, SUM(si.item_price * si.quantity) AS total_sales
 FROM authors a
 JOIN books b ON a.id = b.author_id
 JOIN sale_items si ON b.id = si.book_id
-GROUP BY a.name
+GROUP BY a.name, a.email
 ORDER BY total_sales DESC
 LIMIT 10;
 ```

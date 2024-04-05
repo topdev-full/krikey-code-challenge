@@ -1,14 +1,16 @@
 import React from "react";
-import './index.css';
+import "./index.css";
 
 const TeamMember = ({ name, email }) => (
   <div className="team-member">
-    <svg src="path_to_avatar_image" alt={name} className="avatar" />
-    <div className="member-info">
-      <div className="name">{name}</div>
-      <div className="email">{email}</div>
+    <div className="flex">
+      <img src="/avatar.jpg" alt={name} className="avatar" />
+      <div>
+        <div className="name">{name}</div>
+        <div className="email">{email}</div>
+      </div>
     </div>
-    <button className="remove-button">X</button>
+    <img className="remove-button" src="/cross.svg" />
   </div>
 );
 
