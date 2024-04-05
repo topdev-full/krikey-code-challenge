@@ -1,17 +1,17 @@
 const express = require("express");
 const path = require("path");
 const { Pool } = require("pg");
-import { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER } from "./utils";
+require('dotenv').config();
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 // Set up PostgreSQL connection with a larger pool size
 const pool = new Pool({
-  user: DB_USER,
-  host: DB_HOST,
-  database: DB_NAME,
-  password: DB_PASSWORD,
-  port: DB_PORT,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
   max: 20, // Increase max pool size based on your server's capability
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 2000,
